@@ -2,22 +2,27 @@ package hs.aalen.fitness_tracker_backend.sessions.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
+
+import hs.aalen.fitness_tracker_backend.exercises.model.Exercises;
 
 @Data
 public class SessionsCreateDto {
 
-    // TODO: planId (referenzierter trainingsplan)
+    @NotBlank
+    private UUID planId;
 
     @NotBlank
     private String name;
 
-    @NotBlank
-    private LocalTime scheduledDate;
+    @NotNull
+    private LocalDate scheduledDate;
 
     @NotEmpty
-    private List<String> exerciseExecutions;
+    private List<Exercises> exerciseExecutions;
 }
